@@ -3,7 +3,8 @@ const yearOfBirth = prompt("Mời bạn nhập năm sinh của Trần Văn Quy�
 
 if (yearOfBirth === "2001") {
     document.body.classList.add('block');
-    alert("Đăng nhập thành công !!!\n- Sent by Trần Văn Quyền -")
+    alert("Đăng nhập thành công !\nChào mừng bạn đã đến với Website của tôi\n- Sent by Trần Văn Quyền -")
+    alert("Vui lòng chờ trong giây lát để ảnh được tải lên\nNhấn vào ảnh để tải ảnh về máy\n- Sent by Trần Văn Quyền -")
     document.body.classList.remove('hidden');
 } else {
     alert("Bạn nhập sai năm sinh\nĐăng nhập thất bại !!!\n- Sent by Trần Văn Quyền -")
