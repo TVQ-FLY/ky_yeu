@@ -54,12 +54,20 @@ document.querySelectorAll('#image-grid').forEach(function(image) {
 });
 
 
-const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg']; // Danh sách tên ảnh
+
+const totalImages = 22; // Số lượng ảnh
+const images = [];
+
+for (let i = 1; i <= totalImages; i++) {
+    images.push(`image${i}.jpg`);
+}
+
 const gallery = document.getElementById('gallery');
 const imageModal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
 const downloadButton = document.getElementById('downloadButton');
 const backButton = document.getElementById('backButton');
+
 
 // Tạo gallery
 images.forEach(image => {
