@@ -55,7 +55,8 @@ document.querySelectorAll('#image-grid').forEach(function(image) {
 
 
 // Quy tắc đổi tên: Chọn tất cả các ảnh cần đổi tên => Ấn f2 hoặc chuột phải chọn rename => Gõ "image"
-const totalImages = 22; // Số lượng ảnh
+// Quy tắc đặt lại số thứ tự: Đổi sang một tên khác rồi đổi lại thành "image"
+const totalImages = 32; // Số lượng ảnh
 const images = [];
 
 for (let i = 1; i <= totalImages; i++) {
