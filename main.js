@@ -1,15 +1,47 @@
-// Check pass login
-const yearOfBirth = prompt("Mời bạn nhập năm sinh của Trần Văn Quyền để đăng nhập Website:");
 
-if (yearOfBirth === "2001") {
-    document.body.classList.add('block');
-    alert("Đăng nhập thành công !\nChào mừng bạn đã đến với Website của tôi\n- Sent by Trần Văn Quyền -")
-    alert("Vui lòng chờ trong giây lát để ảnh được tải lên\nNhấn vào ảnh để tải ảnh về máy\n- Sent by Trần Văn Quyền -")
-    document.body.classList.remove('hidden');
-} else {
-    alert("Bạn nhập sai năm sinh\nĐăng nhập thất bại !!!\n- Sent by Trần Văn Quyền -")
-    window.location.href = "https://www.google.com";
+// Quy tắc đổi tên: Chọn tất cả các ảnh cần đổi tên => Ấn f2 hoặc chuột phải chọn rename => Gõ "image"
+// Quy tắc đặt lại số thứ tự: Đổi sang một tên khác rồi đổi lại thành "image"
+const totalImages = 208; // Số lượng ảnh
+const images = [];
+
+for (let i = 1; i <= totalImages; i++) {
+    images.push(`image (${i}).jpg`);
 }
+
+const gallery = document.getElementById('gallery');
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const downloadButton = document.getElementById('downloadButton');
+const backButton = document.getElementById('backButton');
+
+
+// Tạo gallery
+images.forEach(image => {
+    const imgElement = document.createElement('img');
+    imgElement.src = `./images/${image}`;
+    imgElement.alt = image;
+    imgElement.className = "w-full h-auto object-cover rounded-lg shadow-md cursor-pointer";
+    imgElement.addEventListener('click', () => {
+    modalImage.src = imgElement.src;
+    downloadButton.href = imgElement.src; // Liên kết download
+    downloadButton.download = image; // Tên file khi tải về
+    imageModal.style.display = 'flex';
+    });
+    gallery.appendChild(imgElement);
+});
+
+// Nút "Quay lại" đóng modal
+backButton.addEventListener('click', () => {
+    imageModal.style.display = 'none';
+});
+
+// Đóng modal khi nhấn bên ngoài ảnh
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+    imageModal.style.display = 'none';
+    }
+});
+
 
 
 // Lắng nghe sự kiện 'contextmenu' trên toàn bộ trang
@@ -54,48 +86,7 @@ document.querySelectorAll('#image-grid').forEach(function(image) {
 });
 
 
-// Quy tắc đổi tên: Chọn tất cả các ảnh cần đổi tên => Ấn f2 hoặc chuột phải chọn rename => Gõ "image"
-// Quy tắc đặt lại số thứ tự: Đổi sang một tên khác rồi đổi lại thành "image"
-const totalImages = 148; // Số lượng ảnh
-const images = [];
 
-for (let i = 1; i <= totalImages; i++) {
-    images.push(`image (${i}).jpg`);
-}
-
-const gallery = document.getElementById('gallery');
-const imageModal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
-const downloadButton = document.getElementById('downloadButton');
-const backButton = document.getElementById('backButton');
-
-
-// Tạo gallery
-images.forEach(image => {
-    const imgElement = document.createElement('img');
-    imgElement.src = `./images/${image}`;
-    imgElement.alt = image;
-    imgElement.className = "w-full h-auto object-cover rounded-lg shadow-md cursor-pointer";
-    imgElement.addEventListener('click', () => {
-    modalImage.src = imgElement.src;
-    downloadButton.href = imgElement.src; // Liên kết download
-    downloadButton.download = image; // Tên file khi tải về
-    imageModal.style.display = 'flex';
-    });
-    gallery.appendChild(imgElement);
-});
-
-// Nút "Quay lại" đóng modal
-backButton.addEventListener('click', () => {
-    imageModal.style.display = 'none';
-});
-
-// Đóng modal khi nhấn bên ngoài ảnh
-imageModal.addEventListener('click', (e) => {
-    if (e.target === imageModal) {
-    imageModal.style.display = 'none';
-    }
-});
 
 
 // Back top
